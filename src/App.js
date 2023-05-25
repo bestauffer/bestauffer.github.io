@@ -4,8 +4,8 @@ import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route }
     from 'react-router-dom';
 import Home from './pages';
-import About from './pages/about';
-import Projects from './pages/projects';
+import About from './pages/about.js';
+import Projects from './pages/projects.js';
  
 function App() {
     return (

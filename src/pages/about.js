@@ -18,7 +18,7 @@ const About = () => {
     
     <div key={experience.id}>
       {/* <h3>{education.title}</h3> */}
-      <a href={experience.website} style={{marginBottom: 0}}>{experience.employer}</a>
+      <a target="_blank" rel="noopener noreferrer" href={experience.website} style={{marginBottom: 0}}>{experience.employer}</a>
       {/* <p style={{marginTop: 0, marginBottom: 0}}>{experience.website}</p> */}
       <p style={{marginTop: 0, marginBottom: 0}}>{experience.title}</p>
       <p style={{marginTop: 0, marginBottom: 0}}>{experience.years}</p>
@@ -39,7 +39,7 @@ const About = () => {
             <div style={{paddingLeft:"5%", width:"90%"}}>
             <h3>Education</h3>
             <div>{education}</div>
-            <h3>Experiance</h3>
+            <h3>Experience</h3>
             <div>{experience}</div>
             </div>
         </div>
