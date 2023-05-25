@@ -9,7 +9,7 @@ import Projects from './pages/projects';
  
 function App() {
     return (
-      <div class="container">
+      <div class="app-container">
         <Router>
             <Navbar />
             <Routes>
