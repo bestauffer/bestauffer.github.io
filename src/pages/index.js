@@ -2,17 +2,57 @@ import { useState, useEffect } from 'react';
 //import {myMessag} from '../services/MyAPI.js';
 import { getData, storeData } from '../services/storage.js'; 
 import http from "../services/http.js";
+import axios from "axios";
+const apiPath = "https://blakes-deno-server.onrender.com/users/1";
+//const apiPath = "https://api.github.com/users/eunit99/repos"
+
+// const get = (url) => {
+//   //console.log(apiPath + url);
+//   return axios.get( url, );
+// };
+
 const Home = () => {
-    const [username, setUsername] = useState('hi');
+    const [username, setUsername] = useState('');
     // useEffect(async () => {
         
     // }, []);
 
     useEffect(() => {
+
+
+        // const githubResponse = async () => {
+        //     const response = await fetch("https://api.github.com/search/repositories?q=android", {
+        //         method: "GET",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //     });
+        //     return response.json(); // For JSON Response
+        //     //   return response.text(); // For HTML or Text Response
+        // }
+
+
+
+
         async function fetchData() {
           // You can await here
-        await getMyUser;
-        setUsername(await getData("myUser"));
+          try {
+            //    await axios.get(apiPath)
+            //    .then(res => {
+    
+            const response = await fetch(apiPath, {
+                method: "GET",
+                headers: {
+                    accept: "application/json",
+                },
+            });
+            setUsername(response)
+              } catch (error) {
+                //await storeData("myUser", "error");
+                setUsername("Welcome to my page");
+                //if (onError) onError(error);
+              }
+        //setUsername(await getData("myUser"));
           // ...
         }
         fetchData();
@@ -25,26 +65,7 @@ const Home = () => {
     //   }
 
     const getMyUser = async () => {
-        try {
-            const res = await http.get("/users/1");
-            //console.log("resssss=>", res);
-            //const { data } = res;
-            //console.log("data=>", data);
-           await storeData("myUser", res);
-           //  dispatch(setUser(data));
-           //  const { tokens } = data;
-           //  dispatch(setToken(tokens.token));
-           //  dispatch(setUser(data.user));
-           //  await storeData("xAuthToken", tokens.token);
-      
-           //  await storeData("user", data.user);
-           //  // await storeData("authState", tokens.token);
-           //  // await storeData("user", user);
-           //  // await storage.store("user", data.user);
-           //  onSuccess(res);
-          } catch (error) {
-            //if (onError) onError(error);
-          }
+        
         
       }
 

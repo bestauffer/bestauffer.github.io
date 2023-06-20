@@ -1,7 +1,7 @@
 import axios from "axios";
 const apiPath = "https://blakes-deno-server.onrender.com/";
 
-const get = (url = "") => {
+const get = (url) => {
   console.log(apiPath + url);
   return axios.get(apiPath + url, );
 };
