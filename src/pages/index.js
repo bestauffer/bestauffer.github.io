@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 //import {myMessag} from '../services/MyAPI.js';
-import { getData, storeData } from '../services/storage.js'; 
-import http from "../services/http.js";
-import axios from "axios";
+// import { getData, storeData } from '../services/storage.js'; 
+// import http from "../services/http.js";
+// import axios from "axios";
 //const apiPath = "https://blakes-deno-server.onrender.com/static/message.txt";
-const apiPath = "http://localhost:8000";
-
+//const apiPath = "http://localhost:8000";
+const apiPath = "https://blakes-test-deno-server.onrender.com";
 // const get = (url) => {
 //   //console.log(apiPath + url);
 //   return axios.get( url, );
@@ -31,7 +31,7 @@ const Home = () => {
             
               } catch {
                 //await storeData("myUser", "error");
-                setUsername("hi");
+                setUsername("error with deno server... \nBut welcome to my profile");
                 //if (onError) onError(error);
               }
         //setUsername(await getData("myUser"));
