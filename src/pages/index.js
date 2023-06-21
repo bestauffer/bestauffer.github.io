@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { getData, storeData } from '../services/storage.js'; 
 import http from "../services/http.js";
 import axios from "axios";
-const apiPath = "https://blakes-deno-server.onrender.com/users/1";
-//const apiPath = "https://api.github.com/users/eunit99/repos"
+//const apiPath = "https://blakes-deno-server.onrender.com/static/message.txt";
+const apiPath = "http://localhost:8000";
 
 // const get = (url) => {
 //   //console.log(apiPath + url);
@@ -18,38 +18,20 @@ const Home = () => {
     // }, []);
 
     useEffect(() => {
-
-
-        // const githubResponse = async () => {
-        //     const response = await fetch("https://api.github.com/search/repositories?q=android", {
-        //         method: "GET",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //     });
-        //     return response.json(); // For JSON Response
-        //     //   return response.text(); // For HTML or Text Response
-        // }
-
-
-
-
+        
         async function fetchData() {
           // You can await here
           try {
             //    await axios.get(apiPath)
             //    .then(res => {
     
-            const response = await fetch(apiPath, {
-                method: "GET",
-                headers: {
-                    accept: "application/json",
-                },
-            });
-            setUsername(response)
-              } catch (error) {
+            const res = await fetch(`${apiPath}`);
+            const response = await res.json();
+            setUsername(response.message);
+            
+              } catch {
                 //await storeData("myUser", "error");
-                setUsername("Welcome to my page");
+                setUsername("hi");
                 //if (onError) onError(error);
               }
         //setUsername(await getData("myUser"));
