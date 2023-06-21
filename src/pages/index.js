@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 //import {myMessag} from '../services/MyAPI.js';
-// import { getData, storeData } from '../services/storage.js'; 
+ import { getData, storeData } from '../services/storage.js'; 
 // import http from "../services/http.js";
 // import axios from "axios";
 //const apiPath = "https://blakes-deno-server.onrender.com/static/message.txt";
@@ -12,14 +12,23 @@ const apiPath = "https://blakes-test-deno-server.onrender.com";
 // };
 
 const Home = () => {
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('Message incoming.....');
     // useEffect(async () => {
-        
+      
     // }, []);
 
     useEffect(() => {
         
         async function fetchData() {
+          try{
+            const data = await getData("myMessage");
+            if(data){
+              await setUsername(data);
+            }
+            
+          }
+          catch{}
+          
           // You can await here
           try {
             //    await axios.get(apiPath)
@@ -27,7 +36,8 @@ const Home = () => {
     
             const res = await fetch(`${apiPath}`);
             const response = await res.json();
-            setUsername(response.message);
+            await setUsername(response.message);
+            await storeData("myMessage", response.message);
             
               } catch {
                 //await storeData("myUser", "error");
@@ -45,12 +55,6 @@ const Home = () => {
           
     //     };
     //   }
-
-    const getMyUser = async () => {
-        
-        
-      }
-
     //console.log("MyMessage");
    // const words = myMessag;
     //const words = 'hello';
