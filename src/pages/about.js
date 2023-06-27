@@ -22,7 +22,7 @@ const About = () => {
       {/* <p style={{marginTop: 0, marginBottom: 0}}>{experience.website}</p> */}
       <p style={{marginTop: 0, marginBottom: 0}}>{experience.title}</p>
       <p style={{marginTop: 0, marginBottom: 0}}>{experience.years}</p>
-      <p style={{marginTop: 0}}>{experience.description}</p>
+      <p style={{ marginTop: 0}}>{experience.description}</p>
     
     </div>
   );
@@ -65,7 +65,7 @@ const educations = [
         employer: 'Envko', 
         title:'Application Developer Intern', 
         years:'Jan 2023 - June 2023', 
-        description: 'In this Capstone internship I worked on an application that focused on React-Native development for iOS. The application takes bank data and transforms that into a real carbon footprint that the user can see. We expanded the functionality of the app to include stock data and real estate data to help give a more realistic footprint & to allow the user to see the potential carbon footprint impacts of investing.  ',
+        description: "Throughout this project, I collaborated with envko and the product owner to help determine envkos needs and delegate tasks among the team. I served as the scrum master to ensure the team adhered to project timelines.\n My primary contribution included implementing several enhancements on the sponsors' application that made it more efficient and intuitive. Specifically, I added functionality, such as a Face-ID login, and optimized the codebase to improve its overall performance. Additionally, I resolved pre-existing security issues and incorporated a kg/lb toggle option, CSS updates, and new user content. These updates were instrumental in improving the application's user experience and consequently helped in leading to its successful release on the Apple App Store.",
         website: "https://envko.com/"
     }
   ];

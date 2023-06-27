@@ -67,7 +67,7 @@ const Home = () => {
               <img src={myImg} alt="image of Blake Stauffer"/>
               <div style={{padding:6, display:"flex", alignItems:"center", flexDirection:"column", backgroundColor:"orange"}}>
               <h2>Blake Stauffer</h2>
-              <p><a href="https://www.linkedin.com/in/blake-stauffer-174163156/">LinkedIn Profile</a></p>
+              <p><a rel="noopener noreferrer" href="https://www.linkedin.com/in/blake-stauffer-174163156/">LinkedIn Profile</a></p>
               </div>
               
             </div>
