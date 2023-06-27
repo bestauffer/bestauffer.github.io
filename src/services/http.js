@@ -1,5 +1,6 @@
 import axios from "axios";
-const apiPath = "https://blakes-deno-server.onrender.com/";
+import { apiPath } from "../config";
+
 
 const get = (url) => {
   console.log(apiPath + url);
