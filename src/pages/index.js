@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 //import {myMessag} from '../services/MyAPI.js';
- import { getData, storeData } from '../services/storage.js'; 
- import myImg from "../Assets/Images/favicon.jpg";
+import React from 'react';
+import myImg from "../Assets/Images/favicon.jpg";
+import { getData, storeData } from '../services/storage.js';
 // import axios from "axios";
 //const apiPath = "https://blakes-deno-server.onrender.com/static/message.txt";
 //const apiPath = "http://localhost:8000";
@@ -67,7 +68,8 @@ const Home = () => {
               <img src={myImg} alt="image of Blake Stauffer"/>
               <div style={{padding:6, display:"flex", alignItems:"center", flexDirection:"column", backgroundColor:"orange"}}>
               <h2>Blake Stauffer</h2>
-              <p><a rel="noopener noreferrer" href="https://www.linkedin.com/in/blake-stauffer-174163156/">LinkedIn Profile</a></p>
+              <a rel="noopener noreferrer" href="https://www.linkedin.com/in/blake-stauffer-174163156/">LinkedIn Profile</a>
+              <a rel="noopener noreferrer" href="https://github.com/bestauffer">GitHub Profile</a>
               </div>
               
             </div>
