@@ -1,75 +1,101 @@
 import React from "react";
- 
+import {useRef} from "react";
+import { useNavigate } from "react-router-dom";
+import emailjs from '@emailjs/browser';
+import { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY } from "../config";
+
 const Contact = () => {
+  const form = useRef();
+    const navigate = useNavigate();
+    const [formStatus, setFormStatus] = React.useState('Send')
 
-    const education = educations.map((education) =>
-    
-    <div key={education.id}>
-      {/* <h3>{education.title}</h3> */}
-      <p style={{marginBottom: 0}}>{education.school}</p>
-      <p style={{marginTop: 0, marginBottom: 0}}>{education.gpa}</p>
-      <p style={{marginTop: 0, marginBottom: 0}}>{education.attended}</p>
-      <p style={{marginTop: 0}}>{education.graduated}</p>
-    
-    </div>
-  );
+    const onSubmit = (e) => {
+      e.preventDefault();
 
-  const experience = experiences.map((experience) =>
-    
-    <div key={experience.id}>
-      {/* <h3>{education.title}</h3> */}
-      <a target="_blank" rel="noopener noreferrer" href={experience.website} style={{marginBottom: 0}}>{experience.employer}</a>
-      {/* <p style={{marginTop: 0, marginBottom: 0}}>{experience.website}</p> */}
-      <p style={{marginTop: 0, marginBottom: 0}}>{experience.title}</p>
-      <p style={{marginTop: 0, marginBottom: 0}}>{experience.years}</p>
-      <p style={{ marginTop: 0}}>{experience.description}</p>
-    
-    </div>
-  );
+      setFormStatus('Submitting...')
+      const { name, email, message } = e.target.elements
+      let conFom = {
+        name: name.value,
+        email: email.value,
+        message: message.value,
+      }
+      console.log(conFom);
+      try {
+        //    await axios.get(apiPath)
+        //    .then(res => {
+          emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+        navigate("/");
+          console.log(result.text);
+      }, (error) => {
+        navigate("/");
+          console.log(error.text);
+      });
+        // http.get('/email')
+        //   .then(response => {
+        //      navigate("/");
+        //     //setUsername(response.data.message);
+        //     //storeData("myMessage", response.data.message);
+        //   })
+        //   .catch(error => {
+        //     console.error(error);
+        //     navigate("/");
+        //   });
 
-    
+        // const res = await fetch(`${apiPath}`);
+        // const response = await res.json();
+        // await setUsername(response.message);
+        // await storeData("myMessage", response.message);
 
+      } catch {
+        //await storeData("myUser", "error");
+        //setUsername("error with deno server... \nBut welcome to my profile");
+        //if (onError) onError(error);
+      }
 
-
+      e.target.elements.name.value = '';
+      e.target.elements.email.value = '';
+      e.target.elements.message.value = '';
+      e.target.elements.subject.value = '';
+     
+    }
     return (
-        <div class="screen-container">
-            <h1 class="content">
-                About Me
+        <div className="screen-container">
+            <h1 className="content">
+                Contact
             </h1>
-            <div style={{paddingLeft:"5%", width:"90%"}}>
-            <h3>Education</h3>
-            <div>{education}</div>
-            <h3>Experience</h3>
-            <div>{experience}</div>
+            <div className="container">
+                <form ref={form} style={{ width: "232px", display: "flex", flexDirection:"column", justifyContent:"center"}}onSubmit={onSubmit}>
+                    <div style={{ display: "flex", justifyContent:"space-between"}}>
+                        <label htmlFor="name">
+                            Name
+                        </label>
+                        <input type="text" name="name" required />
+                    </div>
+                    <div style={{display: "flex", justifyContent:"space-between"}}>
+                        <label  htmlFor="email">
+                            Email
+                        </label>
+                        <input type="email" name="email" required />
+                    </div>
+                    <div style={{display: "flex", justifyContent:"space-between"}}>
+                        <label  htmlFor="subject">
+                            Subject
+                        </label>
+                        <input type="text" name="subject" required />
+                    </div>
+                    <div style={{display: "flex", justifyContent:"space-between"}}>
+                        <label  htmlFor="message">
+                            Message
+                        </label>
+                        <textarea id="message" name="message" required />
+                    </div>
+                    <button style={{display:"flex", justifyContent:"center", alignSelf:"end", width: "170px"}} type="submit">
+                        {formStatus}
+                    </button>
+                </form>
             </div>
         </div>
     );
 };
-const educations = [
-    {   id: 0, 
-        school: 'Bellevue College - Software Development BAS, Application Development concentration', 
-        gpa:'GPA: 3.89', 
-        attended:'2020-2023', 
-        graduated: 'Graduated: June 2023'
-    },
-    {   id: 1, 
-        school: 'Edmonds Community College - AA', 
-        gpa:'GPA: 3.4', 
-        attended:'2017-2018',
-        graduated: 'Graduated: December 2018'
-    }
-  ];
-
-  const experiences = [
-    {   id: 0, 
-        employer: 'Envko', 
-        title:'Application Developer Intern', 
-        years:'Jan 2023 - June 2023', 
-        description: "Throughout this project, I collaborated with envko and the product owner to help determine envkos needs and delegate tasks among the team. I served as the scrum master to ensure the team adhered to project timelines.\n My primary contribution included implementing several enhancements on the sponsors' application that made it more efficient and intuitive. Specifically, I added functionality, such as a Face-ID login, and optimized the codebase to improve its overall performance. Additionally, I resolved pre-existing security issues and incorporated a kg/lb toggle option, CSS updates, and new user content. These updates were instrumental in improving the application's user experience and consequently helped in leading to its successful release on the Apple App Store.",
-        website: "https://envko.com/"
-    }
-  ];
-  
-  //const root = ReactDOM.createRoot(document.getElementById('root')); 
-  //root.render(<About posts={posts} />);
 export default Contact;

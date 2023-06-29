@@ -6,7 +6,7 @@ import { getData, storeData } from '../services/storage.js';
 // import axios from "axios";
 //const apiPath = "https://blakes-deno-server.onrender.com/static/message.txt";
 //const apiPath = "http://localhost:8000";
-const apiPath = "https://blakes-test-deno-server.onrender.com";
+import { apiPath } from "../config";
 // const get = (url) => {
 //   //console.log(apiPath + url);
 //   return axios.get( url, );
