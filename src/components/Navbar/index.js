@@ -18,6 +18,9 @@ function Navbar (){
                     <Link to="/projects" style={styles.navLink}>
                         Projects
                     </Link>
+                    <Link to="/contact" style={styles.navLink}>
+                        Contact
+                    </Link>
                 </div>
             </div>
         </>
