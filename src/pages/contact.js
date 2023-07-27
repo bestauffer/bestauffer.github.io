@@ -65,7 +65,7 @@ const Contact = () => {
                 Contact
             </h1>
             <div className="container">
-                <form ref={form} style={{ width: "232px", display: "flex", flexDirection:"column", justifyContent:"center"}}onSubmit={onSubmit}>
+                <form ref={form} style={{ width: "232px", display: "flex", flexDirection:"column", justifyContent:"center"}} onSubmit={onSubmit}>
                     <div style={{ display: "flex", justifyContent:"space-between"}}>
                         <label htmlFor="name">
                             Name
