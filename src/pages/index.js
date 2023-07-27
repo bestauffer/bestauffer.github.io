@@ -5,61 +5,70 @@ import { apiPath } from "../config";
 
 
 const Home = () => {
-    const [username, setUsername] = useState('Message incoming.....');
-    // useEffect(async () => {
-      
-    // }, []);
+  const [username, setUsername] = useState('Message incoming.....');
+  // useEffect(async () => {
 
-    useEffect(() => {
-        
-        async function fetchData() {
-          try{
-            const data = await getData("myMessage");
-            if(data){
-              await setUsername(data);
-            }
-            
-          }
-          catch{}
-          
-          // You can await here
-          try {
-            //    await axios.get(apiPath)
-            //    .then(res => {
-    
-            const res = await fetch(`${apiPath}`);
-            const response = await res.json();
-            await setUsername(response.message);
-            await storeData("myMessage", response.message);
-            
-              } catch {
-                //await storeData("myUser", "error");
-                setUsername("error with deno server... \nBut welcome to my profile");
-                //if (onError) onError(error);
-              }
-        //setUsername(await getData("myUser"));
-          // ...
+  // }, []);
+
+  useEffect(() => {
+
+    async function fetchData() {
+      try {
+        const data = await getData("myMessage");
+        if (data) {
+          await setUsername(data);
         }
-        fetchData();
-      }, []); // Or [] if effect doesn't need props or state
-    return (
-        <div class="screen-container">
-            <h1 class="content">
-                {username}
-            </h1>
-            <div style={{display:"flex", flexDirection:"row", backgroundColor:"green"}}>
-              <img src={myImg} alt="image of Blake Stauffer"/>
-              <div style={{padding:6, display:"flex", alignItems:"center", flexDirection:"column", backgroundColor:"orange"}}>
-              <h2>Blake Stauffer</h2>
-              <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/blake-stauffer-174163156/">LinkedIn Profile</a>
-              <a rel="noopener noreferrer" target="_blank" href="https://github.com/bestauffer">GitHub Profile</a>
+
+      }
+      catch { }
+
+      // You can await here
+      try {
+        //    await axios.get(apiPath)
+        //    .then(res => {
+
+        const res = await fetch(`${apiPath}`);
+        const response = await res.json();
+        await setUsername(response.message);
+        await storeData("myMessage", response.message);
+
+      } catch {
+        //await storeData("myUser", "error");
+        setUsername("error with deno server... \nBut welcome to my profile");
+        //if (onError) onError(error);
+      }
+      //setUsername(await getData("myUser"));
+      // ...
+    }
+    fetchData();
+  }, []); // Or [] if effect doesn't need props or state
+  return (
+
+
+
+    <div class="screen-container">
+      <div id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
+        <section id="contact">
+          <div class="container">
+            <h2 class="text-uppercase text-center text-secondary mb-0">{username}</h2>
+            <hr />
+            <div style={{ display: "flex", flexDirection: "row", backgroundColor: "green" }}>
+              <img src={myImg} alt="image of Blake Stauffer" />
+              <div style={{ padding: 6, display: "flex", alignItems: "center", flexDirection: "column", backgroundColor: "orange" }}>
+                <h2>Blake Stauffer</h2>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/blake-stauffer-174163156/">LinkedIn Profile</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://github.com/bestauffer">GitHub Profile</a>
               </div>
-              
+
             </div>
 
-            
-        </div>
-    );
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+  );
 };
- 
+
 export default Home;

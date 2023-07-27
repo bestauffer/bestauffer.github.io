@@ -5,26 +5,26 @@ import '../../styles/styles.css';
  
 function Navbar (){
     return (
-        <div>
+        <header>
         <>
             <div style={styles.nav}>
                 <div style={styles.navMenu}>
                     <Link to="/" style={styles.navLink}>
-                        Home
+                        <b>Home</b>
                     </Link>
                     <Link to="/about" style={styles.navLink}>
-                        About
+                        <b>About</b>
                     </Link>
                     <Link to="/projects" style={styles.navLink}>
-                        Projects
+                        <b>Projects</b>
                     </Link>
                     <Link to="/contact" style={styles.navLink}>
-                        Contact
+                        <b>Contact</b>
                     </Link>
                 </div>
             </div>
         </>
-        </div>
+        </header>
     );
 }
 
@@ -33,10 +33,12 @@ nav: {
     background: "url('https://cdn.pixabay.com/photo/2014/10/29/10/52/binary-code-507786_1280.jpg')",
     height: 85,
     display: "flex",
+    flex:1,
     justifyContent: "space-around",
     padding: "0.2rem calc((100vw - 1000px) / 2)",
-    //zIndex: 12,
-    //width: "100%"
+    position: 'fixed',
+    zIndex: 12,
+    width: "100%"
 },
 navMenu: {
     display: "flex",
@@ -44,8 +46,8 @@ navMenu: {
     marginRight: -24,
 },
 navLink: {
-    color: "#808080",
-  background: "#ffff00",
+  color: "#ffffff", //grey
+  background: "#001800", //yellow
   display: "flex",
   alignItems: "center",
   textDecoration: 'none',
@@ -53,6 +55,8 @@ navLink: {
   padding: "0 1rem",
   height: "50%",
   cursor: "pointer",
+  border: '1px dotted',
+  borderColor:"ffffff"
 }
 };
  
