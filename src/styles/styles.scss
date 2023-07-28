@@ -1,8 +1,8 @@
-.screen-container{
+.screen-container {
     display: flex;
     /* width: 95%; */
     flex-direction: column;
-    
+
     /* height: 100vh - 85; */
     padding-top: 85px;
     /* overflow-y: auto; */
@@ -11,7 +11,8 @@
     justify-content: "space-between";
     background-color: aquamarine;
 }
-.content{
+
+.content {
     /* display: flex; */
     width: 95%;
     display: flex;
@@ -23,7 +24,7 @@
     min-height: 50px;
 }
 
-.contents{
+.contents {
     display: flex;
     /* width: 95%; */
     flex-direction: column;
@@ -33,7 +34,7 @@
     background-color: rgb(168, 255, 127);
 }
 
-.about-content{
+.about-content {
     /* display: flex; */
     width: 95%;
     flex-direction: column;
@@ -45,6 +46,3 @@
 /* .container {
     overflow-y: scroll;
   } */
-
-  
-

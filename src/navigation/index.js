@@ -6,7 +6,7 @@ import About from '../pages/about.js';
 import Contact from '../pages/contact.js';
 import Projects from '../pages/projects.js';
 
-function MainNav()  {
+function MainNav() {
     return (
         <Router>
             <Navbar />

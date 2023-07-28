@@ -1,33 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import myImg from "../Assets/Images/favicon.jpg";
 import { getData, storeData } from '../services/storage.js';
-import { apiPath } from "../config";
-
 
 const Home = () => {
   const [username, setUsername] = useState('Message incoming.....');
-  // useEffect(async () => {
-
-  // }, []);
 
   useEffect(() => {
 
     async function fetchData() {
-      try {
+      
         const data = await getData("myMessage");
         if (data) {
           await setUsername(data);
         }
 
-      }
-      catch { }
-
       // You can await here
       try {
-        //    await axios.get(apiPath)
-        //    .then(res => {
-
-        const res = await fetch(`${apiPath}`);
+        const res = await fetch(`${process.env.REACT_APP_API_PATH}`);
         const response = await res.json();
         await setUsername(response.message);
         await storeData("myMessage", response.message);
@@ -35,17 +24,14 @@ const Home = () => {
       } catch {
         //await storeData("myUser", "error");
         setUsername("error with deno server... \nBut welcome to my profile");
-        //if (onError) onError(error);
       }
-      //setUsername(await getData("myUser"));
-      // ...
+      
     }
+
     fetchData();
   }, []); // Or [] if effect doesn't need props or state
+
   return (
-
-
-
     <div class="screen-container">
       <div id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
         <section id="contact">
@@ -59,16 +45,13 @@ const Home = () => {
                 <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/blake-stauffer-174163156/">LinkedIn Profile</a>
                 <a rel="noopener noreferrer" target="_blank" href="https://github.com/bestauffer">GitHub Profile</a>
               </div>
-
             </div>
-
-
           </div>
         </section>
       </div>
     </div>
-
   );
+
 };
 
 export default Home;

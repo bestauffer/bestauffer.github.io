@@ -1,15 +1,10 @@
 import axios from "axios";
-import { apiPath } from "../config";
-
 
 const get = (url) => {
-  console.log(apiPath + url);
-  return axios.get(apiPath + url, );
+  console.log(process.env.REACT_APP_API_PATH + url);
+  return axios.get(process.env.REACT_APP_API_PATH + url, );
 };
 
-
 export default {
-
   get,
-
 };

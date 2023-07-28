@@ -20,13 +20,14 @@ const About = () => {
   const experience = experiences.map((experience) =>
 
     <div key={experience.id}>
-      {/* <h3>{education.title}</h3> */}
-      <a target="_blank" rel="noopener noreferrer" href={experience.website} style={{ marginBottom: 0 }}>{experience.employer}</a>
-      {/* <p style={{marginTop: 0, marginBottom: 0}}>{experience.website}</p> */}
-      <p style={{ marginTop: 0, marginBottom: 0 }}>{experience.title}</p>
+      <b>
+        <a target="_blank" rel="noopener noreferrer" href={experience.website} style={{ marginBottom: 0 }}>{experience.employer}</a>
+      </b>
+      <b>
+        <p style={{ marginTop: 0, marginBottom: 0 }}>{experience.title}</p>
+      </b>
       <p style={{ marginTop: 0, marginBottom: 0 }}>{experience.years}</p>
       <p style={{ marginTop: 0 }}>{experience.description}</p>
-
     </div>
   );
 
@@ -59,7 +60,7 @@ const educations = [
     school: 'Bellevue College',
     degree: 'Bachelor of Applied Science, Software Development',
     concentration: 'Application Development concentration',
-    gpa: 'GPA: 3.89',
+    gpa: 'GPA: 3.88',
     attended: '2020-2023',
     graduated: 'Jun 2023 - Magna Cum Laude'
   },
