@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import myImg from "../Assets/Images/favicon.jpg";
 import { getData, storeData } from '../services/storage.js';
-
+// import http from "../services/http.js";
 const Home = () => {
   const [username, setUsername] = useState('Message incoming.....');
 
@@ -21,7 +21,19 @@ const Home = () => {
         await setUsername(response.message);
         await storeData("myMessage", response.message);
 
-      } catch {
+      } 
+        // await http
+        // .get().then((resJson) => {
+        //   const response = resJson.json();
+        //   setUsername(response.message);
+        //   storeData("myMessage", response.message);
+        // })
+        // .catch((error) => {
+        //   console.error(error);
+        //   setUsername("error with deno server... \nBut welcome to my profile");
+        // });
+      
+      catch {
         //await storeData("myUser", "error");
         setUsername("error with deno server... \nBut welcome to my profile");
       }
